@@ -1,0 +1,29 @@
+// % = shared properties which relates to "btn-primary" and "btn-secondary" since they both have "btn"
+
+%btn {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 8px 20px;
+    margin: 3px;
+    // & = the parent which is "btn" in this example, can also do btn:hover as well
+    &:hover {
+        transform: scale(.98);
+    }
+}
+
+.btn-primary {
+    // @extend %btn used to call the "%btn" values above
+    @extend %btn;
+    // $primary-color variable called from config file with import into style folder 
+    // lighten or darken color and by how much percent
+    // background-color: lighten($primary-color, 10%);
+    @include set-background(lighten($primary-color, 10%));
+}
+
+.btn-secondary {
+    // @extend %btn used to call the "%btn" values above
+    @extend %btn;
+    // $secondary-color variable called from config file with import into style folder 
+    // background-color: $secondary-color;
+    @include set-background($secondary-color);
+}
